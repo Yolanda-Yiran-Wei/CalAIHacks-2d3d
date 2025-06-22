@@ -22,13 +22,7 @@ export default function UploadPage() {
   const [disasterType, setDisasterType] = useState("")
   const [location, setLocation] = useState("")
   const [description, setDescription] = useState("")
-  const [recentUploads, setRecentUploads] = useState(() => {
-      if (typeof window !== "undefined") {
-          const saved = localStorage.getItem("recentUploads")
-          return saved ? JSON.parse(saved) : []
-      }
-      return []
-  })
+  const [recentUploads, setRecentUploads] = useState<any[]>([])
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     setUploadedFiles((prev) => [...prev, ...acceptedFiles])
@@ -64,12 +58,7 @@ export default function UploadPage() {
           images: uploadedFiles.length,
     }
 
-    setRecentUploads((prev) => {
-        const updated = [newUpload, ...prev]
-        localStorage.setItem("recentUploads", JSON.stringify(updated))
-        return updated
-    })
-
+    setRecentUploads((prev) => [newUpload, ...prev])
     setUploadedFiles([])
     setIsProcessing(false)
     setUploadProgress(0)
