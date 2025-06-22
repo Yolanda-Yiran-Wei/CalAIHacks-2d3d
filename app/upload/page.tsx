@@ -50,7 +50,6 @@ export default function UploadPage() {
     e.preventDefault()
     setIsProcessing(true)
 
-    // Simulate upload and processing
     const formData = new FormData()
     uploadedFiles.forEach((file) => {
       formData.append("images", file)
@@ -74,6 +73,7 @@ export default function UploadPage() {
       images: uploadedFiles.length,
       imageUrls, // ← add this line
     }
+
 
 
     setRecentUploads((prev) => {
@@ -352,6 +352,7 @@ export default function UploadPage() {
                               `${upload.images} images`
                             )}
                           </span>
+
 
                         </div>
                       </div>

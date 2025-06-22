@@ -19,14 +19,15 @@ export default function handler(req, res) {
     console.log("Received images:", files.images)
 
     // Example: fake model output
-      const imageFiles = Array.isArray(files.images) ? files.images : [files.images]
-      const filenames = imageFiles.map(file => file.newFilename)
+       const imageFiles = Array.isArray(files.images) ? files.images : [files.images]
+       const filenames = imageFiles.map(file => file.newFilename)
 
-      return res.status(200).json({
-        success: true,
-        message: "Model ran successfully",
-        filenames,
-      })
+       return res.status(200).json({
+         success: true,
+         message: "Model ran successfully",
+         filenames,
+       })
+
 
   })
 }
