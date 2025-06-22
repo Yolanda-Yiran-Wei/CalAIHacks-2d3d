@@ -13,7 +13,7 @@ export default function DashboardPage() {
         <div
           className="absolute inset-0 opacity-10"
           style={{
-            backgroundImage: `url('/placeholder.svg?height=200&width=1200&text=Emergency+Response+Center')`,
+            backgroundImage: `url('/gettyimages-2177242543.jpg')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
