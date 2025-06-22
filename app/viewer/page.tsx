@@ -10,8 +10,51 @@ import { ArrowLeft, Route, AlertTriangle, Users, MapPin, Clock } from "lucide-re
 import Link from "next/link"
 import { useState, useMemo } from "react"
 import * as THREE from "three"
+from React import useEffect
+
+import { useEffect } from "react"
+
+export default function ViewerPage() {
+  const [meshData, setMeshData] = useState(null)
+
+  useEffect(() => {
+    // Example: fetch mesh data from backend API
+    fetch("/api/mesh/latest") // Adjust endpoint as needed
+      .then(res => res.json())
+      .then(data => setMeshData(data))
+  }, [])
+
+  // ... rest of your code
 
 // 3D Scene Components
+function MeshFromData({ meshData }) {
+  const geometry = useMemo(() => {
+    if (!meshData) return null;
+    const geom = new THREE.BufferGeometry();
+    geom.setAttribute('position', new THREE.Float32BufferAttribute(meshData.vertices, 3));
+    if (meshData.colors && meshData.colors.length > 0) {
+      geom.setAttribute('color', new THREE.Float32BufferAttribute(meshData.colors, 3));
+    }
+    geom.setIndex(meshData.triangles);
+    geom.computeVertexNormals();
+    return geom;
+  }, [meshData]);
+
+  if (!geometry) return null;
+
+  return (
+    <mesh geometry={geometry}>
+      <meshStandardMaterial
+        vertexColors={!!(meshData.colors && meshData.colors.length)}
+        side={THREE.DoubleSide}
+        opacity={0.95}
+        transparent
+      />
+    </mesh>
+  );
+}
+
+
 function DisasterSite() {
   return (
     <group>
@@ -136,6 +179,16 @@ function Markers() {
 }
 
 export default function ViewerPage() {
+    const [meshData, setMeshData] = useState(null);
+
+    useEffect(() => {
+      const data = localStorage.getItem('latestMeshData');
+      if (data) {
+        setMeshData(JSON.parse(data));
+      }
+    }, []);
+
+
   const [selectedRoute, setSelectedRoute] = useState("optimal")
 
   return (
@@ -171,13 +224,15 @@ export default function ViewerPage() {
           <Canvas camera={{ position: [10, 8, 10], fov: 60 }}>
             <ambientLight intensity={0.4} />
             <directionalLight position={[10, 10, 5]} intensity={1} />
-            <DisasterSite />
-            <SafeRoute />
-            <DangerZones />
-            <Markers />
+            {meshData ? (
+              <MeshFromData meshData={meshData} />
+            ) : (
+              <Html center>Loading 3D Model...</Html>
+            )}
             <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
             <Environment preset="sunset" />
           </Canvas>
+
 
           {/* 3D Controls Overlay */}
           <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-lg p-4 shadow-lg">

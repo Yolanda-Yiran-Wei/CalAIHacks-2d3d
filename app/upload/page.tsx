@@ -46,6 +46,40 @@ export default function UploadPage() {
     setUploadedFiles((prev) => prev.filter((_, i) => i !== index))
   }
 
+  const handleGenerate3DModel = async () => {
+    setIsProcessing(true);
+
+    // Convert files to base64
+    const base64Images = await Promise.all(
+      uploadedFiles.map(
+        (file) =>
+          new Promise<string>((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () => resolve(reader.result as string);
+            reader.readAsDataURL(file);
+          })
+      )
+    );
+
+    // Send to backend
+    const response = await fetch('/api/process_images', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ images: base64Images }),
+    });
+
+    const meshData = await response.json();
+
+    // Save mesh data locally for the viewer page
+    localStorage.setItem('latestMeshData', JSON.stringify(meshData));
+
+    setIsProcessing(false);
+
+    // Redirect to viewer page
+    window.location.href = '/viewer';
+  };
+
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsProcessing(true)
@@ -286,13 +320,15 @@ export default function UploadPage() {
               <Button type="button" variant="outline">
                 Save as Draft
               </Button>
-              <Button
-                type="submit"
-                disabled={uploadedFiles.length === 0 || isProcessing}
-                className="bg-blue-600 hover:bg-blue-700"
-              >
-                {isProcessing ? "Processing..." : "Generate 3D Model"}
-              </Button>
+               <Button
+                 type="button"
+                 onClick={handleGenerate3DModel}
+                 disabled={uploadedFiles.length === 0 || isProcessing}
+                 className="bg-blue-600 hover:bg-blue-700"
+               >
+                 {isProcessing ? "Processing..." : "Generate 3D Model"}
+               </Button>
+
             </div>
           </form>
 
