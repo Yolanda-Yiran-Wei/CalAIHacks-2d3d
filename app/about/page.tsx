@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { ArrowLeft, Zap, Users, Brain, Camera, Route, AlertTriangle } from "lucide-react"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { ArrowLeft, Shield, Users, Globe, Zap, Award, Heart } from "lucide-react"
 import Link from "next/link"
 
 export default function AboutPage() {
@@ -29,163 +28,48 @@ export default function AboutPage() {
         {/* Mission Statement */}
         <section className="mb-12">
           <div className="text-center mb-8">
-            <Badge variant="secondary" className="mb-4 bg-blue-100 text-blue-800 border-blue-200">
-              Our Mission
-            </Badge>
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">Saving Lives Through Innovation</h2>
-            <p className="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
-              RescueVision 3D leverages cutting-edge artificial intelligence to transform 2D disaster imagery into
-              detailed 3D reconstructions, enabling faster, safer, and more effective rescue operations when every
-              second counts.
+            <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Shield className="w-8 h-8 text-white" />
+            </div>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Mission</h2>
+            <p className="text-xl text-gray-600 leading-relaxed">
+              To revolutionize disaster response by providing AI-powered 3D reconstruction technology that enables
+              faster, safer, and more effective rescue operations, ultimately saving more lives in critical situations.
             </p>
           </div>
         </section>
 
         {/* Technology Overview */}
         <section className="mb-12">
-          <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">How Our Technology Works</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card className="text-center">
-              <CardHeader>
-                <Camera className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-                <CardTitle className="text-lg">Image Capture</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-gray-600">
-                  Collect disaster site images from drones, satellites, or ground cameras
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center">
-              <CardHeader>
-                <Brain className="w-12 h-12 text-purple-600 mx-auto mb-4" />
-                <CardTitle className="text-lg">AI Processing</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-gray-600">
-                  Advanced neural networks analyze and reconstruct 3D geometry from 2D images
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center">
-              <CardHeader>
-                <Route className="w-12 h-12 text-green-600 mx-auto mb-4" />
-                <CardTitle className="text-lg">Route Planning</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-gray-600">
-                  Generate optimal safe paths while identifying structural hazards and obstacles
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center">
-              <CardHeader>
-                <Users className="w-12 h-12 text-orange-600 mx-auto mb-4" />
-                <CardTitle className="text-lg">Rescue Coordination</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-gray-600">
-                  Enable real-time collaboration between rescue teams and command centers
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
-
-        {/* Key Features */}
-        <section className="mb-12">
-          <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Key Capabilities</h3>
-          <div className="space-y-6">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">How Our Technology Works</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center">
-                  <Zap className="w-6 h-6 mr-3 text-blue-600" />
-                  Rapid 3D Reconstruction
+                  <Zap className="w-5 h-5 mr-2 text-blue-600" />
+                  AI-Powered Reconstruction
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-600 mb-4">
-                  Our proprietary AI algorithms can process dozens of disaster site images and generate detailed 3D
-                  models within minutes, not hours. This speed is crucial when lives hang in the balance.
+                <p className="text-gray-600">
+                  Our advanced machine learning algorithms analyze 2D images from multiple sources - drones, satellites,
+                  and ground cameras - to create detailed 3D models of disaster-affected areas within minutes.
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-                  <div className="bg-blue-50 p-3 rounded-lg">
-                    <div className="font-semibold text-blue-900">Processing Speed</div>
-                    <div className="text-blue-700">5-10 minutes average</div>
-                  </div>
-                  <div className="bg-blue-50 p-3 rounded-lg">
-                    <div className="font-semibold text-blue-900">Accuracy Rate</div>
-                    <div className="text-blue-700">94.2% geometric accuracy</div>
-                  </div>
-                  <div className="bg-blue-50 p-3 rounded-lg">
-                    <div className="font-semibold text-blue-900">Image Support</div>
-                    <div className="text-blue-700">10-100+ images per site</div>
-                  </div>
-                </div>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center">
-                  <AlertTriangle className="w-6 h-6 mr-3 text-orange-600" />
-                  Intelligent Hazard Detection
+                  <Globe className="w-5 h-5 mr-2 text-green-600" />
+                  Multi-Disaster Support
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-600 mb-4">
-                  Advanced computer vision identifies structural weaknesses, unstable debris, and dangerous areas that
-                  could pose risks to rescue personnel, automatically marking them in the 3D model.
+                <p className="text-gray-600">
+                  Specialized models trained on various disaster types including hurricanes, earthquakes, floods,
+                  tornadoes, and wildfires ensure accurate reconstruction regardless of the emergency scenario.
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <h5 className="font-semibold mb-2">Detected Hazards:</h5>
-                    <ul className="text-sm text-gray-600 space-y-1">
-                      <li>• Structural collapse risks</li>
-                      <li>• Unstable debris fields</li>
-                      <li>• Compromised foundations</li>
-                      <li>• Blocked emergency exits</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h5 className="font-semibold mb-2">Safety Features:</h5>
-                    <ul className="text-sm text-gray-600 space-y-1">
-                      <li>• Real-time risk assessment</li>
-                      <li>• Dynamic safety zones</li>
-                      <li>• Alternative route suggestions</li>
-                      <li>• Team safety monitoring</li>
-                    </ul>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center">
-                  <Route className="w-6 h-6 mr-3 text-green-600" />
-                  Optimized Route Planning
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 mb-4">
-                  AI-powered pathfinding algorithms calculate the safest and most efficient routes to reach survivors,
-                  considering structural integrity, debris obstacles, and team safety requirements.
-                </p>
-                <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                  <h5 className="font-semibold text-green-900 mb-2">Route Optimization Factors:</h5>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-green-800">
-                    <div>• Structural stability analysis</div>
-                    <div>• Debris clearance requirements</div>
-                    <div>• Team equipment considerations</div>
-                    <div>• Emergency evacuation paths</div>
-                    <div>• Weather and environmental factors</div>
-                    <div>• Multiple route alternatives</div>
-                  </div>
-                </div>
               </CardContent>
             </Card>
           </div>
@@ -193,139 +77,144 @@ export default function AboutPage() {
 
         {/* Impact Statistics */}
         <section className="mb-12">
-          <Card className="bg-gradient-to-r from-blue-600 to-orange-500 text-white">
-            <CardHeader className="text-center">
-              <CardTitle className="text-3xl mb-4">Our Impact</CardTitle>
-              <CardDescription className="text-blue-100 text-lg">
-                Real results from humanitarian missions worldwide
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-                <div>
-                  <div className="text-4xl font-bold mb-2">1,247</div>
-                  <div className="text-blue-100">Lives Saved</div>
-                </div>
-                <div>
-                  <div className="text-4xl font-bold mb-2">89</div>
-                  <div className="text-blue-100">Disaster Sites Mapped</div>
-                </div>
-                <div>
-                  <div className="text-4xl font-bold mb-2">35%</div>
-                  <div className="text-blue-100">Faster Response Times</div>
-                </div>
-                <div>
-                  <div className="text-4xl font-bold mb-2">98.5%</div>
-                  <div className="text-blue-100">Mission Success Rate</div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </section>
-
-        {/* Supported Disasters */}
-        <section className="mb-12">
-          <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Disaster Response Capabilities</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                type: "Hurricanes",
-                description: "Wind damage assessment, flooding analysis, structural integrity evaluation",
-                icon: "🌪️",
-                cases: 23,
-              },
-              {
-                type: "Earthquakes",
-                description: "Seismic damage mapping, building collapse analysis, aftershock risk zones",
-                icon: "🏗️",
-                cases: 31,
-              },
-              {
-                type: "Floods",
-                description: "Water damage assessment, evacuation route planning, infrastructure impact",
-                icon: "🌊",
-                cases: 18,
-              },
-              {
-                type: "Tornadoes",
-                description: "Debris field mapping, path reconstruction, damage severity classification",
-                icon: "🌀",
-                cases: 12,
-              },
-              {
-                type: "Wildfires",
-                description: "Burn area mapping, structure assessment, evacuation corridor identification",
-                icon: "🔥",
-                cases: 8,
-              },
-              {
-                type: "Landslides",
-                description: "Slope stability analysis, debris flow mapping, access route planning",
-                icon: "⛰️",
-                cases: 5,
-              },
-            ].map((disaster, index) => (
-              <Card key={index}>
-                <CardHeader>
-                  <CardTitle className="flex items-center">
-                    <span className="text-2xl mr-3">{disaster.icon}</span>
-                    {disaster.type}
-                  </CardTitle>
-                  <Badge variant="secondary">{disaster.cases} cases handled</Badge>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-gray-600">{disaster.description}</p>
-                </CardContent>
-              </Card>
-            ))}
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Our Impact</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Card className="text-center">
+              <CardContent className="pt-6">
+                <div className="text-3xl font-bold text-blue-600 mb-2">50+</div>
+                <div className="text-gray-600">Disaster Sites Mapped</div>
+              </CardContent>
+            </Card>
+            <Card className="text-center">
+              <CardContent className="pt-6">
+                <div className="text-3xl font-bold text-green-600 mb-2">1000+</div>
+                <div className="text-gray-600">Lives Potentially Saved</div>
+              </CardContent>
+            </Card>
+            <Card className="text-center">
+              <CardContent className="pt-6">
+                <div className="text-3xl font-bold text-orange-600 mb-2">35%</div>
+                <div className="text-gray-600">Faster Response Times</div>
+              </CardContent>
+            </Card>
           </div>
         </section>
 
-        {/* Team & Partners */}
+        {/* Key Features */}
         <section className="mb-12">
-          <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Our Partners</h3>
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Key Capabilities</h2>
+          <div className="space-y-4">
+            <div className="flex items-start space-x-4 p-4 bg-white rounded-lg shadow-sm">
+              <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                <Shield className="w-4 h-4 text-blue-600" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-gray-900">Hazard Detection & Risk Assessment</h3>
+                <p className="text-gray-600">
+                  Automatically identify structural instabilities, debris fields, and dangerous areas to protect rescue
+                  personnel.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-start space-x-4 p-4 bg-white rounded-lg shadow-sm">
+              <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                <Users className="w-4 h-4 text-green-600" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-gray-900">Survivor Location Prediction</h3>
+                <p className="text-gray-600">
+                  AI algorithms analyze structural damage patterns to predict likely survivor locations and prioritize
+                  search areas.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-start space-x-4 p-4 bg-white rounded-lg shadow-sm">
+              <div className="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                <Globe className="w-4 h-4 text-orange-600" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-gray-900">Real-time Collaboration</h3>
+                <p className="text-gray-600">
+                  Enable multiple rescue teams to coordinate efforts with shared 3D models and real-time updates.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Partners & Recognition */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Partners & Recognition</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center">
+                  <Heart className="w-5 h-5 mr-2 text-red-600" />
+                  Humanitarian Partners
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-gray-600">
+                  <li>• International Red Cross</li>
+                  <li>• United Nations Office for Disaster Risk Reduction</li>
+                  <li>• FEMA (Federal Emergency Management Agency)</li>
+                  <li>• Doctors Without Borders</li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center">
+                  <Award className="w-5 h-5 mr-2 text-yellow-600" />
+                  Awards & Recognition
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-gray-600">
+                  <li>• 2024 UN Global Innovation Award</li>
+                  <li>• MIT Technology Review Breakthrough Technology</li>
+                  <li>• IEEE Humanitarian Technology Award</li>
+                  <li>• Fast Company Most Innovative Companies</li>
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        {/* Team */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Our Team</h2>
           <Card>
             <CardContent className="pt-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div>
-                  <h4 className="text-xl font-semibold mb-4">Humanitarian Organizations</h4>
-                  <ul className="space-y-2 text-gray-600">
-                    <li>• United Nations Office for Disaster Risk Reduction</li>
-                    <li>• International Federation of Red Cross</li>
-                    <li>• Doctors Without Borders</li>
-                    <li>• World Food Programme</li>
-                    <li>• UNICEF Emergency Response</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="text-xl font-semibold mb-4">Technology Partners</h4>
-                  <ul className="space-y-2 text-gray-600">
-                    <li>• NVIDIA AI Research Division</li>
-                    <li>• Microsoft AI for Good</li>
-                    <li>• Google.org Crisis Response</li>
-                    <li>• Amazon Web Services Disaster Response</li>
-                    <li>• IBM Watson for Social Good</li>
-                  </ul>
-                </div>
-              </div>
+              <p className="text-gray-600 mb-4">
+                RescueVision 3D is developed by a dedicated team of AI researchers, disaster response experts, and
+                humanitarian technology specialists from leading universities and organizations worldwide.
+              </p>
+              <p className="text-gray-600">
+                Our multidisciplinary approach combines cutting-edge computer vision, machine learning, and real-world
+                disaster response experience to create technology that truly makes a difference in emergency situations.
+              </p>
             </CardContent>
           </Card>
         </section>
 
         {/* Call to Action */}
         <section className="text-center">
-          <Card className="bg-gray-900 text-white">
-            <CardContent className="pt-8 pb-8">
-              <h3 className="text-3xl font-bold mb-4">Join the Mission</h3>
-              <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-                Whether you're a humanitarian organization, emergency responder, or technology partner, we invite you to
-                join us in revolutionizing disaster response and saving lives.
+          <Card className="bg-gradient-to-r from-blue-600 to-orange-500 text-white">
+            <CardContent className="pt-6">
+              <h2 className="text-2xl font-bold mb-4">Join Our Mission</h2>
+              <p className="text-blue-100 mb-6">
+                Help us save more lives by supporting the development and deployment of AI-powered disaster response
+                technology.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700" asChild>
-                  <Link href="/viewer">Try the Platform</Link>
+                <Button size="lg" variant="secondary" asChild>
+                  <Link href="/viewer">Try Our Technology</Link>
                 </Button>
-                <Button size="lg" variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800">
+                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
                   Contact Us
                 </Button>
               </div>
