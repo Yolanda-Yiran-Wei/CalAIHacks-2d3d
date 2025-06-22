@@ -10,8 +10,12 @@ import { ArrowLeft, Route, AlertTriangle, Users, MapPin, Clock } from "lucide-re
 import Link from "next/link"
 import { useState, useMemo } from "react"
 import * as THREE from "three"
-import routeImage from '../zoomed_out.png'; // Adjust path as needed
-import routeImage2 from '../close_up.png'; // Adjust path as needed
+import zoomedOut from '../../images/zoomed_out.png';
+import closeUp from '../../images/close_up.png';
+
+
+<img src={zoomedOut} alt="Zoomed Out" />
+<img src={closeUp} alt="Close Up" />
 
 
 // 3D Scene Components
@@ -278,7 +282,7 @@ export default function ViewerPage() {
               {/* Image goes here */}
               <div className="px-6 pb-4">
                 <img
-                  src={routeImage} // or use the external URL: "https://pplx-res.cloudinary.com/image/private/user_uploads/58157400/aef64303-1ef8-43a4-8f98-b34659794d1c/image.jpg"
+                  src={zoomedOut} // or use the external URL: "https://pplx-res.cloudinary.com/image/private/user_uploads/58157400/aef64303-1ef8-43a4-8f98-b34659794d1c/image.jpg"
                   alt="Route Planning Illustration"
                   className="w-full rounded-lg shadow"
                 />
@@ -299,7 +303,7 @@ export default function ViewerPage() {
                           {/* Image goes here */}
                           <div className="px-6 pb-4">
                             <img
-                              src={routeImage2} // or use the external URL: "https://pplx-res.cloudinary.com/image/private/user_uploads/58157400/aef64303-1ef8-43a4-8f98-b34659794d1c/image.jpg"
+                              src={closeUp} // or use the external URL: "https://pplx-res.cloudinary.com/image/private/user_uploads/58157400/aef64303-1ef8-43a4-8f98-b34659794d1c/image.jpg"
                               alt="Route Planning Illustration"
                               className="w-full rounded-lg shadow"
                             />
