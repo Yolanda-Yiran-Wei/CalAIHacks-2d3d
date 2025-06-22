@@ -22,6 +22,7 @@ export default function UploadPage() {
   const [disasterType, setDisasterType] = useState("")
   const [location, setLocation] = useState("")
   const [description, setDescription] = useState("")
+  const [recentUploads, setRecentUploads] = useState<any[]>([])
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     setUploadedFiles((prev) => [...prev, ...acceptedFiles])
@@ -48,6 +49,22 @@ export default function UploadPage() {
       setUploadProgress(i)
       await new Promise((resolve) => setTimeout(resolve, 200))
     }
+
+    const newUpload = {
+          name: `${disasterType.charAt(0).toUpperCase() + disasterType.slice(1)} - ${description.substring(0, 30)}...`,
+          location,
+          date: new Date().toLocaleString(),
+          status: "Completed",
+          images: uploadedFiles.length,
+    }
+
+    setRecentUploads((prev) => [newUpload, ...prev])
+    setUploadedFiles([])
+    setIsProcessing(false)
+    setUploadProgress(0)
+    setDisasterType("")
+    setLocation("")
+    setDescription("")
 
     setTimeout(() => {
       setIsProcessing(false)
@@ -276,29 +293,7 @@ export default function UploadPage() {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                {[
-                  {
-                    name: "Hurricane Maria - Building Complex Alpha",
-                    location: "San Juan, Puerto Rico",
-                    date: "2 hours ago",
-                    status: "Completed",
-                    images: 23,
-                  },
-                  {
-                    name: "Earthquake Damage - Residential Area",
-                    location: "Mexico City, Mexico",
-                    date: "1 day ago",
-                    status: "Completed",
-                    images: 18,
-                  },
-                  {
-                    name: "Flood Damage Assessment",
-                    location: "Houston, Texas",
-                    date: "3 days ago",
-                    status: "Processing",
-                    images: 31,
-                  },
-                ].map((upload, index) => (
+                {recentUploads.map((upload, index) => (
                   <div key={index} className="flex items-center justify-between p-4 border rounded-lg">
                     <div className="flex items-center space-x-4">
                       <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
