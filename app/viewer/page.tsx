@@ -10,6 +10,9 @@ import { ArrowLeft, Route, AlertTriangle, Users, MapPin, Clock } from "lucide-re
 import Link from "next/link"
 import { useState, useMemo } from "react"
 import * as THREE from "three"
+import routeImage from '../zoomed_out.png'; // Adjust path as needed
+import routeImage2 from '../close_up.png'; // Adjust path as needed
+
 
 // 3D Scene Components
 function DisasterSite() {
@@ -260,6 +263,48 @@ export default function ViewerPage() {
                 </div>
               </CardContent>
             </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center">
+                  <Route className="w-5 h-5 mr-2" />
+                  Route Planning
+                </CardTitle>
+                <CardDescription>Zoomed out photo of AI-generated shortest path from rescuer to destination with risk labels </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {/* ...Route planning content... */}
+              </CardContent>
+              {/* Image goes here */}
+              <div className="px-6 pb-4">
+                <img
+                  src={routeImage} // or use the external URL: "https://pplx-res.cloudinary.com/image/private/user_uploads/58157400/aef64303-1ef8-43a4-8f98-b34659794d1c/image.jpg"
+                  alt="Route Planning Illustration"
+                  className="w-full rounded-lg shadow"
+                />
+              </div>
+            </Card>
+
+              <Card>
+                          <CardHeader>
+                            <CardTitle className="flex items-center">
+                              <Route className="w-5 h-5 mr-2" />
+                              Route Planning
+                            </CardTitle>
+                            <CardDescription>Close up photo of AI-generated shortest path from rescuer to destination with risk labels </CardDescription>
+                          </CardHeader>
+                          <CardContent className="space-y-4">
+                            {/* ...Route planning content... */}
+                          </CardContent>
+                          {/* Image goes here */}
+                          <div className="px-6 pb-4">
+                            <img
+                              src={routeImage2} // or use the external URL: "https://pplx-res.cloudinary.com/image/private/user_uploads/58157400/aef64303-1ef8-43a4-8f98-b34659794d1c/image.jpg"
+                              alt="Route Planning Illustration"
+                              className="w-full rounded-lg shadow"
+                            />
+                          </div>
+                        </Card>
 
             {/* Hazard Analysis */}
             <Card>
