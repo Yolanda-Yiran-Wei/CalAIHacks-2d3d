@@ -22,6 +22,7 @@ export default function UploadPage() {
   const [disasterType, setDisasterType] = useState("")
   const [location, setLocation] = useState("")
   const [description, setDescription] = useState("")
+
   const [recentUploads, setRecentUploads] = useState(() => {
       if (typeof window !== "undefined") {
           const saved = localStorage.getItem("recentUploads")
@@ -57,12 +58,27 @@ export default function UploadPage() {
     }
 
     const newUpload = {
+          id: Date.now().toString(), // unique ID
           name: `${disasterType.charAt(0).toUpperCase() + disasterType.slice(1)} - ${description.substring(0, 30)}...`,
           location,
           date: new Date().toLocaleString(),
           status: "Completed",
           images: uploadedFiles.length,
+          imagePreviews: await Promise.all(
+              uploadedFiles.map(file => {
+                return new Promise((resolve) => {
+                  const reader = new FileReader();
+                  reader.onloadend = () => resolve(reader.result);
+                  reader.readAsDataURL(file); // base64 encode
+                });
+              })
+          ),
     }
+
+    /*
+    const existingUploads = JSON.parse(localStorage.getItem("uploads") || "[]");
+    localStorage.setItem("uploads", JSON.stringify([newUpload, ...existingUploads]));
+    */
 
     setRecentUploads((prev) => {
         const updated = [newUpload, ...prev]
