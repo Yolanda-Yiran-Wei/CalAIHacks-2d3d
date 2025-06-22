@@ -1,4 +1,4 @@
-"use client"More actions
+"use client"
 
 import type React from "react"
 
@@ -22,7 +22,6 @@ export default function UploadPage() {
   const [disasterType, setDisasterType] = useState("")
   const [location, setLocation] = useState("")
   const [description, setDescription] = useState("")
-  const [recentUploads, setRecentUploads] = useState<any[]>([])
   const [recentUploads, setRecentUploads] = useState(() => {
       if (typeof window !== "undefined") {
           const saved = localStorage.getItem("recentUploads")
@@ -65,7 +64,6 @@ export default function UploadPage() {
           images: uploadedFiles.length,
     }
 
-    setRecentUploads((prev) => [newUpload, ...prev])
     setRecentUploads((prev) => {
         const updated = [newUpload, ...prev]
         localStorage.setItem("recentUploads", JSON.stringify(updated))
