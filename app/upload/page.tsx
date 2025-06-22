@@ -51,10 +51,19 @@ export default function UploadPage() {
     setIsProcessing(true)
 
     // Simulate upload and processing
-    for (let i = 0; i <= 100; i += 10) {
-      setUploadProgress(i)
-      await new Promise((resolve) => setTimeout(resolve, 200))
-    }
+    const formData = new FormData()
+    uploadedFiles.forEach((file) => {
+      formData.append("images", file)
+    })
+
+    const res = await fetch("/api/upload", {
+      method: "POST",
+      body: formData,
+    })
+
+    const result = await res.json()
+    console.log("Backend result:", result)
+
 
     const newUpload = {
           name: `${disasterType.charAt(0).toUpperCase() + disasterType.slice(1)} - ${description.substring(0, 30)}...`,

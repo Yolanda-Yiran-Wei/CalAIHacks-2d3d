@@ -7,6 +7,9 @@
 /.next/
 /out/
 
+/csH
+/cs_hacks
+
 # production
 /build
 
