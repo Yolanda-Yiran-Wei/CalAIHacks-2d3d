@@ -11,9 +11,9 @@ export default function DashboardPage() {
       {/* Header with disaster background */}
       <header className="relative bg-white border-b px-4 py-4 overflow-hidden">
         <div
-          className="absolute inset-0 opacity-10"
+          className="absolute inset-0 opacity-80"
           style={{
-            backgroundImage: `url('/placeholder.svg?height=200&width=1200&text=Emergency+Response+Center')`,
+            backgroundImage: `url('/gettyimages-2177242543.jpg?height=200&width=1200&text=Emergency+Response+Center')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
