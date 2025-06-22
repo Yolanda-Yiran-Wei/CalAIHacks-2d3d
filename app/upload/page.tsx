@@ -64,14 +64,17 @@ export default function UploadPage() {
     const result = await res.json()
     console.log("Backend result:", result)
 
+    const imageUrls = result.filenames.map((name: string) => `/uploads/${name}`)
 
     const newUpload = {
-          name: `${disasterType.charAt(0).toUpperCase() + disasterType.slice(1)} - ${description.substring(0, 30)}...`,
-          location,
-          date: new Date().toLocaleString(),
-          status: "Completed",
-          images: uploadedFiles.length,
+      name: `${disasterType.charAt(0).toUpperCase() + disasterType.slice(1)} - ${description.substring(0, 30)}...`,
+      location,
+      date: new Date().toLocaleString(),
+      status: "Completed",
+      images: uploadedFiles.length,
+      imageUrls, // ← add this line
     }
+
 
     setRecentUploads((prev) => {
         const updated = [newUpload, ...prev]
@@ -330,7 +333,26 @@ export default function UploadPage() {
                             <Calendar className="w-3 h-3 mr-1" />
                             {upload.date}
                           </span>
-                          <span>{upload.images} images</span>
+                          <span>
+                            {upload.imageUrls && upload.imageUrls.length > 0 ? (
+                              <span className="flex flex-wrap gap-2">
+                                {upload.imageUrls.map((url: string, idx: number) => (
+                                  <a
+                                    key={idx}
+                                    href={url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-blue-600 underline text-sm"
+                                  >
+                                    Image {idx + 1}
+                                  </a>
+                                ))}
+                              </span>
+                            ) : (
+                              `${upload.images} images`
+                            )}
+                          </span>
+
                         </div>
                       </div>
                     </div>
